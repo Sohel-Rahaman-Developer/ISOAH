@@ -16,8 +16,8 @@ const HomePage = () => {
     {
       id: 1,
       imageUrl: '/images/image1.webp',
-      title: 'Welcome to Parallax Slider',
-      subtitle: 'Experience the Artistic Parallax Effect',
+      title: 'Welcome to Hacking World',
+      subtitle: 'Experience the Artistic Effect',
     },
     {
       id: 2,
@@ -41,12 +41,7 @@ const HomePage = () => {
 
   return (
     <main className=" flex justify-center items-center flex-col overflow-hidden mx-auto sm:px-10 px-5">
-      {/* Particles Background */}
-   
-
-      {/* Cursor */}
       <Cursor />
-
       <div className="test">
         <Navbar />
         <ParallaxSlider slides={slides} />
@@ -56,7 +51,7 @@ const HomePage = () => {
         <BrandCarousel />
         <RecentProjects />
         <Timeline />
-        <section className= "overflow-hidden">
+        <section className="overflow-hidden">
           <div className="w-full  max-w-7xl mx-auto px-4 md:px-6 py-24">
             <h2 className="text-4xl font-bold mb-10 text-white text-center">
               Our Students Feedback
