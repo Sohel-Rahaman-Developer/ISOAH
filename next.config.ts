@@ -1,10 +1,18 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  reactStrictMode: true,
+  reactStrictMode: false,
   images: {
-    domains: ['cruip-tutorials.vercel.app','images.pexels.com'],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cruip-tutorials.vercel.app",
+      },
+      {
+        protocol: "https",
+        hostname: "images.pexels.com",
+      },
+    ],
   },
 };
 

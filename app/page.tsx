@@ -1,6 +1,6 @@
 import BrandCarousel from './components/BrandCarousel';
 import { Footer } from './components/Footer';
-import Navbar from './components/Navbar';
+import Navbar from './components/Header/Navbar';
 import NumbersSection from './components/NumbersSection';
 import ParallaxSlider from './components/ParallaxSlider';
 import RecentProjects from './components/RecentProjects';
