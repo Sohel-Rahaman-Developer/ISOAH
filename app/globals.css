@@ -404,7 +404,7 @@
 }
 body {
   background-color: #000319;
-  cursor: none;
+  /* cursor: none; */
 }
 
 @keyframes glitch {
