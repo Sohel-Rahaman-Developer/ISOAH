@@ -1,13 +1,19 @@
 /* eslint-disable @next/next/no-img-element */
-'use client';
+"use client";
 
 import React from "react";
 import { VerticalTimelineElement } from "react-vertical-timeline-component";
-import { motion, Variants } from "framer-motion";
+import { motion, Variants, Variant, Transition } from "framer-motion";
 import { FaBriefcase, FaGraduationCap, FaStar } from "react-icons/fa";
 import Image from "next/image";
 
 type EventType = "work" | "education" | "misc";
+
+interface EventAnimation {
+  initial?: Variant;
+  whileInView?: Variant;
+  transition?: Transition;
+}
 
 interface TimelineEvent {
   date: string;
@@ -16,11 +22,7 @@ interface TimelineEvent {
   image: string;
   type: EventType;
   iconStyle: React.CSSProperties;
-  animation?: {
-    initial?: object;
-    whileInView?: object;
-    transition?: object;
-  };
+  animation?: EventAnimation;
 }
 
 const getIconByType = (type: EventType): React.ReactElement => {
@@ -38,13 +40,15 @@ interface TimelineEventProps {
   event: TimelineEvent;
 }
 
-const TimelineEventComponent: React.FC<TimelineEventProps> = ({ event }) => {
-  const defaultAnimation: Variants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0 },
-  };
+// Define default animation as Variants
+const defaultAnimation: Variants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0 },
+};
 
-  const animationVariants: Variants | { hidden: object; visible: object; } | undefined = event.animation
+const TimelineEventComponent: React.FC<TimelineEventProps> = ({ event }) => {
+  // Build the variants object so that it always conforms to `Variants`
+  const animationVariants: Variants = event.animation
     ? {
         hidden: event.animation.initial || { opacity: 0, y: 50 },
         visible: event.animation.whileInView || { opacity: 1, y: 0 },
@@ -70,6 +74,7 @@ const TimelineEventComponent: React.FC<TimelineEventProps> = ({ event }) => {
         initial="hidden"
         whileInView="visible"
         variants={animationVariants}
+        // You can still pass transition separately if you want:
         transition={event.animation?.transition || { duration: 1, ease: "easeOut" }}
         viewport={{ once: true, amount: 0.5 }}
       >

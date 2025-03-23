@@ -40,7 +40,7 @@ const RecentProjects = () => {
           <div className="flex flex-wrap items-center justify-around px-4 gap-10 sm:gap-5 md:gap-16 mt-5">
             {projects.map((item, index) => (
               <motion.div
-                className="lg:min-h-[32.5rem] h-[22rem] md:h-[25rem] flex items-center justify-center sm:w-64 md:w-80 w-[100%]"
+                className="lg:min-h-[32.5rem] backdrop-blur-[0.2rem] h-[22rem] md:h-[25rem] flex items-center justify-center sm:w-64 md:w-80 w-[100%]"
                 key={item.id}
                 custom={getDirection(index)}
                 initial="hidden"
