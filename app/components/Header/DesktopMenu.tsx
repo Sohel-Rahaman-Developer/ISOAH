@@ -21,27 +21,31 @@ interface DesktopMenuProps {
 
 const DesktopMenu: React.FC<DesktopMenuProps> = ({ menuItems, closeMenu }) => {
   return (
-    <div className="hidden md:flex items-center space-x-8">
+    <div className="hidden md:flex items-center space-x-8 ho-effect">
       {menuItems.map((item, index) =>
         item.children ? (
           <Animated key={index} direction={item.animation} duration={0.6} delay={0}>
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-white bg-transparent hover:bg-white hover:text-black">
-                    {item.label}
+                  <NavigationMenuTrigger
+                    className="navbar-hover-effect text-[#ddd] font-bold bg-transparent hover:bg-white hover:text-black"
+                    data-replace={item.label}
+                  >
+                    <span>{item.label}</span>
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid gap-3 py-4 md:w-80 lg:w-64">
+                    <ul className="grid gap-3 py-4 md:w-80 lg:w-64 ho-effect-loop">
                       {item.children.map((child, childIndex) => (
                         <li key={childIndex}>
                           <NavigationMenuLink asChild>
                             <Link
                               href={child.href}
-                              className="block p-2 rounded-md hover:bg-gray-200"
+                              className="navbar-hover-effect block p-2 rounded-md hover:bg-gray-200"
+                              data-replace={child.label}
                               onClick={closeMenu}
                             >
-                              {child.label}
+                              <span>{child.label}</span>
                             </Link>
                           </NavigationMenuLink>
                         </li>
@@ -57,11 +61,12 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({ menuItems, closeMenu }) => {
         ) : (
           <Animated key={index} direction={item.animation} duration={0.6} delay={0}>
             <Link
-              href={item.href!} // Use non-null assertion because href must exist if no children.
-              className="text-white hover:text-white"
+              href={item.href!}
+              className="navbar-hover-effect text-[#ddd] hover:text-[#ddd]"
+              data-replace={item.label}
               onClick={closeMenu}
             >
-              {item.label}
+              <span>{item.label}</span>
             </Link>
           </Animated>
         )

@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 'use client';
 
 import React, { useEffect } from 'react';
@@ -42,7 +41,7 @@ const NumbersSection: React.FC = () => {
           </div>
 
           {/* Right Section */}
-          <div className="flex flex-wrap justify-center md:justify-start gap-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 w-full">
             {data.map((item, index) => (
               <CountUpCard key={index} item={item} />
             ))}
@@ -89,7 +88,7 @@ const CountUpCard: React.FC<CountUpCardProps> = ({ item }) => {
       transition={{ duration: 1, ease: 'easeOut' }}
     >
       <motion.h3
-        className="text-5xl font-extrabold text-white mb-2"
+        className="text-5xl font-extrabold text-[#fff] mb-2"
         initial={{ opacity: 0, y: 50 }}
         animate={controls}
         variants={numberVariants}
@@ -97,7 +96,7 @@ const CountUpCard: React.FC<CountUpCardProps> = ({ item }) => {
       >
         <CountUpAnimated end={endValue} suffix={suffix} start={inView} />
       </motion.h3>
-      <p className="text-white text-lg">{item.description}</p>
+      <p className="text-[#ddd] text-lg">{item.description}</p>
     </motion.div>
   );
 };

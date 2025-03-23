@@ -1,7 +1,3 @@
-// components/Animated.tsx
-
-"use client";
-
 import { motion, Variants } from "framer-motion";
 import React, { ReactNode } from "react";
 
@@ -12,10 +8,9 @@ interface AnimatedProps {
   direction?: Direction;
   duration?: number;
   delay?: number;
-  initial?: any;
-  animate?: any;
-  exit?: any;
   className?: string;
+  // Optionally, allow passing a custom hover animation
+  hoverAnimation?: any;
 }
 
 const getVariants = (direction: Direction): Variants => {
@@ -59,12 +54,10 @@ const Animated: React.FC<AnimatedProps> = ({
   direction = "fade",
   duration = 0.5,
   delay = 0,
-  initial,
-  animate,
-  exit,
   className = "",
+  hoverAnimation, // Optional prop to override hover animation
 }) => {
-  const variants = initial || getVariants(direction);
+  const variants = getVariants(direction);
 
   return (
     <motion.div
@@ -73,6 +66,14 @@ const Animated: React.FC<AnimatedProps> = ({
       exit="hidden"
       variants={variants}
       transition={{ duration, delay, ease: "easeOut" }}
+      // Add a whileHover prop to handle hover animations:
+      whileHover={
+        hoverAnimation ??
+        {
+          // For example, slide the element a bit to the right on hover:
+          x: 5,
+        }
+      }
       className={className}
     >
       {children}

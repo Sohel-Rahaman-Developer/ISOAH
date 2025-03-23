@@ -1,8 +1,7 @@
-/* eslint-disable @next/next/no-img-element */
-/* eslint-disable @next/next/no-html-link-for-pages */
+
 
 'use client';
-
+import Image from "next/image";
 import React from 'react';
 import { motion, Variants } from 'framer-motion';
 // import { FaBriefcase, FaGraduationCap, FaStar } from 'react-icons/fa';
@@ -42,7 +41,8 @@ export const Footer: React.FC = () => {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1 }}
           >
-            <img src="/f.webp" className='h-10 w-10 me-3' alt="" /> <div className='text-[25px] md:text-[30px] '>ForensicsHQ</div>
+            <Image width={500}
+              height={500} src="/f.webp" className='h-10 w-10 me-3' alt="" /> <div className='text-[25px] md:text-[30px] '>ForensicsHQ</div>
           </motion.div>
 
           {/* Grid Sections */}
@@ -57,9 +57,9 @@ export const Footer: React.FC = () => {
               transition={{ duration: 1 }}
             >
               <div>
-                <h2 className="text-2xl font-bold text-white">Get the latest news!</h2>
+                <h2 className="text-2xl font-bold text-[#ddd]">Get the latest news!</h2>
 
-                <p className="mt-4 text-gray-500">
+                <p className="mt-4 text-gray-400">
                   Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse non cupiditate quae nam
                   molestias.
                 </p>
@@ -85,11 +85,11 @@ export const Footer: React.FC = () => {
                     type="email"
                     id="UserEmail"
                     placeholder="test@gmail.com"
-                    className="w-full bg-transparent placeholder:text-slate-400 text-white text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
+                    className="w-full bg-transparent placeholder:text-slate-400 text-[#ddd] text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
                   />
 
                   <button
-                    className="mt-1 w-full bg-blue-600 px-6 py-3 text-sm font-bold uppercase tracking-wide text-white transition-none hover:bg-blue-600 sm:mt-0 sm:w-auto sm:shrink-0"
+                    className="mt-1 rounded-md w-full bg-blue-600 px-6 py-3 text-sm font-bold uppercase tracking-wide text-[#ddd] transition-none hover:bg-blue-600 sm:mt-0 sm:w-auto sm:shrink-0"
                   >
                     Sign Up
                   </button>
@@ -106,27 +106,27 @@ export const Footer: React.FC = () => {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 1 }}
             >
-              <p className="font-medium text-white">Services</p>
+              <p className="font-medium text-[#ddd]">Services</p>
 
               <ul className="mt-6 space-y-4 text-sm">
                 <li>
-                  <a href="#" className="text-gray-700 transition hover:opacity-75">1on1 Coaching</a>
+                  <a href="#" className="text-gray-400 transition hover:opacity-75">1on1 Coaching</a>
                 </li>
 
                 <li>
-                  <a href="#" className="text-gray-700 transition hover:opacity-75">Company Review</a>
+                  <a href="#" className="text-gray-400 transition hover:opacity-75">Company Review</a>
                 </li>
 
                 <li>
-                  <a href="#" className="text-gray-700 transition hover:opacity-75">Accounts Review</a>
+                  <a href="#" className="text-gray-400 transition hover:opacity-75">Accounts Review</a>
                 </li>
 
                 <li>
-                  <a href="#" className="text-gray-700 transition hover:opacity-75">HR Consulting</a>
+                  <a href="#" className="text-gray-400 transition hover:opacity-75">HR Consulting</a>
                 </li>
 
                 <li>
-                  <a href="#" className="text-gray-700 transition hover:opacity-75">SEO Optimisation</a>
+                  <a href="#" className="text-gray-400 transition hover:opacity-75">SEO Optimisation</a>
                 </li>
               </ul>
             </motion.div>
@@ -140,19 +140,19 @@ export const Footer: React.FC = () => {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 1 }}
             >
-              <p className="font-medium text-white">Company</p>
+              <p className="font-medium text-[#ddd]">Company</p>
 
               <ul className="mt-6 space-y-4 text-sm">
                 <li>
-                  <a href="#" className="text-gray-700 transition hover:opacity-75">About</a>
+                  <a href="#" className="text-gray-400 transition hover:opacity-75">About</a>
                 </li>
 
                 <li>
-                  <a href="#" className="text-gray-700 transition hover:opacity-75">Meet the Team</a>
+                  <a href="#" className="text-gray-400 transition hover:opacity-75">Meet the Team</a>
                 </li>
 
                 <li>
-                  <a href="#" className="text-gray-700 transition hover:opacity-75">Accounts Review</a>
+                  <a href="#" className="text-gray-400 transition hover:opacity-75">Accounts Review</a>
                 </li>
               </ul>
             </motion.div>
@@ -166,23 +166,23 @@ export const Footer: React.FC = () => {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 1 }}
             >
-              <p className="font-medium text-white">Our Branches</p>
+              <p className="font-medium text-[#ddd]">Our Branches</p>
 
               <div>
                 <ul className="space-y-6 text-sm">
-                  <li className="border-b border-gray-700 text-gray-700 pb-4">
+                  <li className="border-b border-gray-700 text-gray-400 pb-4">
                     <p>
                       Our address is Plot Number 23, 2nd Floor, Lane Number 2, District Center,
                       Chandrasekharpur, Bhubaneswar, Odisha 751016.
                     </p>
                   </li>
-                  <li className="border-b border-gray-700 text-gray-700 pb-4">
+                  <li className="border-b border-gray-700 text-gray-400 pb-4">
                     <p>
                       Our address is Baghajatin Park Main Road, Sub-Registry Office Building,
                       1st Floor. Beside Axis Bank.
                     </p>
                   </li>
-                  <li className="border-b border-gray-700 text-gray-700 pb-4">
+                  <li className="border-b border-gray-700 text-gray-400 pb-4">
                     <p>
                       Our address is Danphelink PVT LTD, 2nd Floor, Rem Work Building,
                       Kamalpokhari 01, Kathmandu, Nepal 44600.
@@ -236,7 +236,7 @@ export const Footer: React.FC = () => {
                   href="#"
                   rel="noreferrer"
                   target="_blank"
-                  className="text-gray-700 transition hover:opacity-75"
+                  className="text-gray-400 transition hover:opacity-75"
                 >
                   <span className="sr-only">Facebook</span>
 
@@ -255,7 +255,7 @@ export const Footer: React.FC = () => {
                   href="#"
                   rel="noreferrer"
                   target="_blank"
-                  className="text-gray-700 transition hover:opacity-75"
+                  className="text-gray-400 transition hover:opacity-75"
                 >
                   <span className="sr-only">Instagram</span>
 
@@ -274,7 +274,7 @@ export const Footer: React.FC = () => {
                   href="#"
                   rel="noreferrer"
                   target="_blank"
-                  className="text-gray-700 transition hover:opacity-75"
+                  className="text-gray-400 transition hover:opacity-75"
                 >
                   <span className="sr-only">Twitter</span>
 
@@ -291,7 +291,7 @@ export const Footer: React.FC = () => {
                   href="#"
                   rel="noreferrer"
                   target="_blank"
-                  className="text-gray-700 transition hover:opacity-75"
+                  className="text-gray-400 transition hover:opacity-75"
                 >
                   <span className="sr-only">GitHub</span>
 
@@ -310,7 +310,7 @@ export const Footer: React.FC = () => {
                   href="#"
                   rel="noreferrer"
                   target="_blank"
-                  className="text-gray-700 transition hover:opacity-75"
+                  className="text-gray-400 transition hover:opacity-75"
                 >
                   <span className="sr-only">Dribbble</span>
 
