@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaUserTie, FaShieldAlt, FaLaptopCode } from 'react-icons/fa';
+import { FaUserTie,  FaLaptopCode } from 'react-icons/fa';
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },

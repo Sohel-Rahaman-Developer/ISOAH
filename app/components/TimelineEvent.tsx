@@ -1,19 +1,12 @@
-/* eslint-disable @next/next/no-img-element */
-"use client";
+'use client';
 
 import React from "react";
 import { VerticalTimelineElement } from "react-vertical-timeline-component";
-import { motion, Variants, Variant, Transition } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { FaBriefcase, FaGraduationCap, FaStar } from "react-icons/fa";
 import Image from "next/image";
 
 type EventType = "work" | "education" | "misc";
-
-interface EventAnimation {
-  initial?: Variant;
-  whileInView?: Variant;
-  transition?: Transition;
-}
 
 interface TimelineEvent {
   date: string;
@@ -22,7 +15,11 @@ interface TimelineEvent {
   image: string;
   type: EventType;
   iconStyle: React.CSSProperties;
-  animation?: EventAnimation;
+  animation?: {
+    initial?: Variants["hidden"];
+    whileInView?: Variants["visible"];
+    transition?: object;
+  };
 }
 
 const getIconByType = (type: EventType): React.ReactElement => {
@@ -40,14 +37,12 @@ interface TimelineEventProps {
   event: TimelineEvent;
 }
 
-// Define default animation as Variants
-const defaultAnimation: Variants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0 },
-};
-
 const TimelineEventComponent: React.FC<TimelineEventProps> = ({ event }) => {
-  // Build the variants object so that it always conforms to `Variants`
+  const defaultAnimation: Variants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   const animationVariants: Variants = event.animation
     ? {
         hidden: event.animation.initial || { opacity: 0, y: 50 },
@@ -74,7 +69,6 @@ const TimelineEventComponent: React.FC<TimelineEventProps> = ({ event }) => {
         initial="hidden"
         whileInView="visible"
         variants={animationVariants}
-        // You can still pass transition separately if you want:
         transition={event.animation?.transition || { duration: 1, ease: "easeOut" }}
         viewport={{ once: true, amount: 0.5 }}
       >

@@ -1,4 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
+ 
 'use client';
 
 import React from "react";
@@ -23,7 +23,7 @@ const WhatWeDo: React.FC = () => {
   };
 
   return (
-    <section className="py-10 px-5 lg:px-20  text-white overflow-hidden">
+    <section className="py-10 px-5 lg:px-20  text-[#ddd] overflow-hidden">
       <div className="flex flex-col lg:flex-row max-w-7xl mx-auto">
         {/* Left Section */}
         <motion.div
@@ -52,26 +52,26 @@ const WhatWeDo: React.FC = () => {
                   : { type: "tween", duration: 2, ease: "easeInOut" }
               }
             >
-              <h3 className="text-md tracking-wide text-white uppercase">
+              <h3 className="text-md tracking-wide text-[#ddd] uppercase">
                 Empowering Cyber Resilience Globally
               </h3>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#ddd] mb-4">
                 What We Do
               </h2>
               <div className="space-y-4">
-                <p className="text-base text-white leading-relaxed">
+                <p className="text-base text-[#ddd] leading-relaxed">
                   Specialized training programs designed to develop highly skilled Digital Forensics professionals.
                 </p>
-                <p className="text-base text-white leading-relaxed">
+                <p className="text-base text-[#ddd] leading-relaxed">
                   Partner with organizations to strengthen their defenses against intricate digital evidence tampering and complex data breaches.
                 </p>
-                <p className="text-base text-white leading-relaxed">
+                <p className="text-base text-[#ddd] leading-relaxed">
                   Investigate digital incidents and uncover forensically sound intelligence to support legal investigations and secure crucial evidence.
                 </p>
               </div>
               <motion.button
                 id="box-shining"
-                className="mt-6 px-6 py-3 text-white rounded-full bg-blue-600 hover:bg-blue-700 transition duration-300"
+                className="mt-6 px-6 py-3 text-[#ddd] rounded-full bg-blue-600 hover:bg-blue-700 transition duration-300"
                 aria-label="Learn More About What We Do"
                 // No Framer Motion hover effects needed here as CSS handles it
               >
