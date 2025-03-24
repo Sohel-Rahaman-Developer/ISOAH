@@ -1,5 +1,7 @@
-// DesktopMenu.tsx
+"use client";
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useState, useEffect } from 'react';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -20,16 +22,29 @@ interface DesktopMenuProps {
 }
 
 const DesktopMenu: React.FC<DesktopMenuProps> = ({ menuItems, closeMenu }) => {
+  const router = useRouter();
+  const [currentPath, setCurrentPath] = useState<string>('');
+
+  // On mount (or when router changes), set the current path from window.location
+  useEffect(() => {
+    setCurrentPath(window.location.pathname);
+  }, [router]);
+
   return (
     <div className="hidden md:flex items-center space-x-8 ho-effect">
       {menuItems.map((item, index) =>
         item.children ? (
+          // For menu items with children, check if any child href matches the current path.
           <Animated key={index} direction={item.animation} duration={0.6} delay={0}>
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
                   <NavigationMenuTrigger
-                    className="navbar-hover-effect text-[#ddd] font-bold bg-transparent hover:bg-white hover:text-black"
+                    className={`navbar-hover-effect text-[#ddd] font-bold bg-transparent hover:bg-white hover:text-black ${
+                      item.children.some(child => child.href === currentPath)
+                        ? 'active-class'
+                        : ''
+                    }`}
                     data-replace={item.label}
                   >
                     <span>{item.label}</span>
@@ -41,7 +56,9 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({ menuItems, closeMenu }) => {
                           <NavigationMenuLink asChild>
                             <Link
                               href={child.href}
-                              className="navbar-hover-effect block p-2 rounded-md hover:bg-gray-200"
+                              className={`navbar-hover-effect block p-2 rounded-md hover:bg-gray-200 ${
+                                currentPath === child.href ? 'active-class' : ''
+                              }`}
                               data-replace={child.label}
                               onClick={closeMenu}
                             >
@@ -59,14 +76,19 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({ menuItems, closeMenu }) => {
             </NavigationMenu>
           </Animated>
         ) : (
+          // For single-level menu items, check if its href matches the current path.
           <Animated key={index} direction={item.animation} duration={0.6} delay={0}>
             <Link
               href={item.href!}
-              className="navbar-hover-effect text-[#ddd] hover:text-[#ddd]"
+              className={`navbar-hover-effect text-[#ddd] hover:text-[#ddd] ${
+                currentPath === item.href ? 'active-menu' : ''
+              }`}
               data-replace={item.label}
               onClick={closeMenu}
             >
-              <span>{item.label}</span>
+              <span className={`${
+                currentPath === item.href ? 'active-menu' : ''
+              }`}>{item.label}</span>
             </Link>
           </Animated>
         )
