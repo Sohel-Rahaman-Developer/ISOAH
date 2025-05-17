@@ -85,12 +85,12 @@ const BrandCarousel: React.FC = () => {
 
   return (
     <div className="w-full relative overflow-hidden">
-        <h1 className="heading bg-[#ffffffb5] text-[30px] md:text-[38px] text-center font-bold pb-0 md:pb-10">
+        <h1 className="heading bg-[#ffff] text-[30px] md:text-[38px] text-center font-bold pb-0 md:pb-10">
         Our Client
           </h1>
 
       {/* Carousel */}
-      <div className="overflow-hidden bg-gradient-to-t pb-10 from-black-100 via-[#ffffffb5] to-[#ffffffb5]">
+      <div className="overflow-hidden bg-gradient-to-t pb-10 from-white via-[#ffff] to-[#ffff]">
         <div
           ref={carouselRef}
           className="flex"

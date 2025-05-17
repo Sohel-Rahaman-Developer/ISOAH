@@ -25,7 +25,7 @@ const NumbersSection: React.FC = () => {
   ];
 
   return (
-    <section className="bg-gradient-to-b from-black-100 to-[#ffffffb5] py-16 overflow-hidden">
+    <section className="bg-gradient-to-b from-black-100 to-[#ffff] py-16 overflow-hidden">
       <div className="bg-white max-w-7xl mx-auto px-5 py-16 rounded-xl shadow-2xl">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           {/* Left Section */}

@@ -1,4 +1,5 @@
 import BrandCarousel from './components/BrandCarousel';
+import CoursesSection from './components/CoursesSection';
 import { Footer } from './components/Footer';
 import Navbar from './components/Header/Navbar';
 import NumbersSection from './components/NumbersSection';
@@ -49,7 +50,8 @@ const HomePage = () => {
         <WhatWeDo />
         <NumbersSection />
         <BrandCarousel />
-        <RecentProjects />
+        {/* <RecentProjects /> */}
+        <CoursesSection/>
         <Timeline />
         <section className="overflow-hidden">
           <div className="w-full  max-w-7xl mx-auto px-4 md:px-6 py-24">

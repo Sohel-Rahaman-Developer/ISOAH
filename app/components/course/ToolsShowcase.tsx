@@ -1,0 +1,62 @@
+// src/components/ToolsShowcase.tsx
+"use client";
+
+import React from "react";
+
+const tools = [
+  {
+    name: "Tor Browser",
+    src: "/images/tools/tor-logo.png",
+  },
+  {
+    name: "InTrack",
+    src: "/images/tools/intrack-logo.png",
+  },
+  {
+    name: "Hunchly",
+    src: "/images/tools/hunchly-logo.png",
+  },
+  {
+    name: "Magnet Forensics",
+    src: "/images/tools/magnet-logo.png",
+  },
+  {
+    name: "InsiderFoot",
+    src: "/images/tools/insiderfoot-logo.png",
+  },
+  {
+    name: "Autopsy",
+    src: "/images/tools/autopsy-logo.png",
+  },
+];
+
+export default function ToolsShowcase() {
+  return (
+    <section className="py-16 px-4 bg-gray-50 text-black">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="mb-8">
+          <h2 className="text-3xl font-bold">Tools</h2>
+          <p className="mt-2 text-lg text-blue-700">
+            Practical experience using advanced digital forensic tools.
+          </p>
+        </div>
+        {/* Logos Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
+          {tools.map((tool) => (
+            <div
+              key={tool.name}
+              className="flex items-center justify-center bg-white bg-opacity-20 rounded-lg p-6"
+            >
+              <img
+                src={tool.src}
+                alt={tool.name}
+                className="max-h-12 object-contain"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
