@@ -1,36 +1,13 @@
-// src/components/ToolsShowcase.tsx
 "use client";
 
 import React from "react";
+import type { Course } from "@/app/types/course";
 
-const tools = [
-  {
-    name: "Tor Browser",
-    src: "/images/tools/tor-logo.png",
-  },
-  {
-    name: "InTrack",
-    src: "/images/tools/intrack-logo.png",
-  },
-  {
-    name: "Hunchly",
-    src: "/images/tools/hunchly-logo.png",
-  },
-  {
-    name: "Magnet Forensics",
-    src: "/images/tools/magnet-logo.png",
-  },
-  {
-    name: "InsiderFoot",
-    src: "/images/tools/insiderfoot-logo.png",
-  },
-  {
-    name: "Autopsy",
-    src: "/images/tools/autopsy-logo.png",
-  },
-];
+interface ToolsShowcaseProps {
+  tools: Course["tools"];
+}
 
-export default function ToolsShowcase() {
+export default function ToolsShowcase({ tools }: ToolsShowcaseProps) {
   return (
     <section className="py-16 px-4 bg-gray-50 text-black">
       <div className="max-w-7xl mx-auto">

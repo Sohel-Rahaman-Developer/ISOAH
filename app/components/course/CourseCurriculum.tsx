@@ -1,4 +1,3 @@
-// src/components/CourseCurriculum.tsx
 "use client";
 
 import React, { useState } from "react";
@@ -11,142 +10,16 @@ import {
   FiDownload,
 } from "react-icons/fi";
 import { AiOutlineProject } from "react-icons/ai";
+import type { Course } from "@/app/types/course";
 
-interface Module {
-  title: string;
-  bullets: string[];
-  project?: string;
-  caseStudy?: string;
+interface CourseCurriculumProps {
+  milestones: Course["curriculum"];
 }
 
-interface Milestone {
-  id: number;
-  title: string;
-  duration: string;
-  modules: Module[];
-  stats: {
-    liveSessions: number;
-    projects: number;
-    caseStudies: number;
-    quizzes: number;
-  };
-}
-
-const milestones: Milestone[] = [
-  {
-    id: 1,
-    title: "Cyber Foundations & Lab Arsenal",
-    duration: "2 weeks",
-    stats: { liveSessions: 12, projects: 2, caseStudies: 1, quizzes: 2 },
-    modules: [
-      {
-        title: "Networking Fundamentals & Cyber Basics",
-        bullets: [
-          "Intro to Networking Concepts",
-          "IP Addressing (Public/Private, IPv6)",
-          "MAC, Ports, Protocols, TCP/UDP",
-          "How Internet Works: ARP, DHCP, DNS",
-          "HTTP, DNS Records, Zone Files",
-          "Doubt Solving",
-        ],
-        project: "Label the diagram (Networking)",
-        caseStudy:
-          "2008 Ahmedabad Bombings – Tracing the Digital Footprint",
-      },
-      {
-        title: "Linux + Lab Setup with AI",
-        bullets: [
-          "Lab Setup (Kali Linux, VM, Dual Boot)",
-          "Linux Commands, File Structure",
-          "Software Installation",
-          "Hands-on with Terminal Commands",
-          "Doubt Solving using AI",
-        ],
-        project: "Updating sources.list",
-      },
-    ],
-  },
-  {
-    id: 2,
-    title: "Recon & System Infiltration Toolkit",
-    duration: "2 weeks",
-    stats: { liveSessions: 12, projects: 2, caseStudies: 2, quizzes: 2 },
-    modules: [
-      {
-        title: "Recon Fundamentals",
-        bullets: [
-          "OSINT Techniques",
-          "Website Footprinting",
-          "Network Scanning Tools",
-        ],
-        project: "OSINT Report",
-      },
-      {
-        title: "Exploitation Toolkit",
-        bullets: ["Metasploit Basics", "Vulnerability Scanning"],
-        project: "Exploit Lab",
-      },
-    ],
-  },
-  {
-    id: 3,
-    title: "Real-World Exploitation & Red Team Skills",
-    duration: "2 weeks",
-    stats: { liveSessions: 12, projects: 2, caseStudies: 2, quizzes: 2 },
-    modules: [
-      {
-        title: "Advanced Exploitation Techniques",
-        bullets: [
-          "Buffer Overflows",
-          "Web App Exploits",
-          "Privilege Escalation",
-        ],
-        project: "Exploit Development",
-      },
-      {
-        title: "Red Team Methodologies",
-        bullets: [
-          "Attack Simulation Planning",
-          "Command & Control",
-          "Reporting & Documentation",
-        ],
-        project: "Red Team Exercise",
-      },
-    ],
-  },
-  {
-    id: 4,
-    title: "Advanced Attacks & Career Launchpad",
-    duration: "1 week",
-    stats: { liveSessions: 6, projects: 1, caseStudies: 1, quizzes: 1 },
-    modules: [
-      {
-        title: "Emerging Threats",
-        bullets: ["IoT Attacks", "Cloud Exploits", "Mobile Hacking"],
-        project: "Threat Research",
-      },
-    ],
-  },
-  {
-    id: 5,
-    title: "Bonus Sessions",
-    duration: "–",
-    stats: { liveSessions: 4, projects: 0, caseStudies: 0, quizzes: 0 },
-    modules: [
-      {
-        title: "Live Q&A and Hackathons",
-        bullets: [
-          "Hands-on Hackathons",
-          "Live Q&A with Experts",
-          "Resume & Interview Prep",
-        ],
-      },
-    ],
-  },
-];
-
-export default function CourseCurriculum() {
-  const [openId, setOpenId] = useState<number>(milestones[0].id);
+export default function CourseCurriculum({
+  milestones,
+}: CourseCurriculumProps) {
+  const [openId, setOpenId] = useState<number>(milestones[0]?.id || 0);
 
   return (
     <section className="bg-gray-50 py-16 px-4">
@@ -174,28 +47,39 @@ export default function CourseCurriculum() {
             <FiClock className="text-lg text-gray-600" />
             <div>
               <p className="text-xs text-gray-500">Duration</p>
-              <p className="font-semibold text-gray-900">8 Weeks</p>
+              <p className="font-semibold text-gray-900">
+                {milestones.reduce((sum, m) => {
+                  const weeks = parseInt(m.duration) || 0;
+                  return sum + weeks;
+                }, 0)}{" "}
+                Weeks
+              </p>
             </div>
           </div>
           <div className="flex items-center space-x-2">
             <FiRefreshCw className="text-lg text-gray-600" />
             <div>
               <p className="text-xs text-gray-500">Mode</p>
-              <p className="font-semibold text-gray-900">Oflline</p>
+              <p className="font-semibold text-gray-900">Offline</p>
             </div>
           </div>
           <div className="flex items-center space-x-2">
             <FiVideo className="text-lg text-gray-600" />
             <div>
               <p className="text-xs text-gray-500">Live Sessions</p>
-              <p className="font-semibold text-gray-900">44+ hrs</p>
+              <p className="font-semibold text-gray-900">
+                {milestones.reduce((sum, m) => sum + m.stats.liveSessions, 0)}
+                + hrs
+              </p>
             </div>
           </div>
           <div className="flex items-center space-x-2">
             <AiOutlineProject className="text-lg text-gray-600" />
             <div>
               <p className="text-xs text-gray-500">Projects</p>
-              <p className="font-semibold text-gray-900">8</p>
+              <p className="font-semibold text-gray-900">
+                {milestones.reduce((sum, m) => sum + m.stats.projects, 0)}
+              </p>
             </div>
           </div>
         </div>
@@ -224,7 +108,6 @@ export default function CourseCurriculum() {
               key={ms.id}
               className="rounded-2xl overflow-hidden border border-gray-300"
             >
-              {/* Header */}
               <button
                 onClick={() => setOpenId(isOpen ? 0 : ms.id)}
                 className={`w-full flex justify-between items-center px-6 py-4 ${
@@ -239,7 +122,6 @@ export default function CourseCurriculum() {
                 <span className="text-2xl">{isOpen ? "−" : "+"}</span>
               </button>
 
-              {/* Animated Body */}
               <AnimatePresence initial={false}>
                 {isOpen && (
                   <motion.div
@@ -251,7 +133,6 @@ export default function CourseCurriculum() {
                     className="bg-white px-6 overflow-hidden"
                   >
                     <div className="py-6 space-y-6">
-                      {/* Title & Stats */}
                       <div className="space-y-4">
                         <p className="text-lg font-medium text-gray-900">
                           {ms.title}
@@ -276,7 +157,6 @@ export default function CourseCurriculum() {
                         </div>
                       </div>
 
-                      {/* Modules Grid */}
                       <div className="grid md:grid-cols-2 gap-6">
                         {ms.modules.map((mod, i) => (
                           <div

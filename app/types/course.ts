@@ -1,5 +1,11 @@
 export interface Course {
+  id: number;
   slug: string;
+  title: string;
+  des: string;
+  img: string;
+  iconLists: string[];
+  link: string;
   details: {
     title: string;
     tagline: string;
@@ -9,7 +15,7 @@ export interface Course {
       linkedinJobs: string;
       mentors: string;
     };
-    actions: { type: 'primary' | 'secondary'; label: string; href: string }[];
+    actions: { type: "primary" | "secondary"; label: string; href: string }[];
     heroImage: string;
     playDemoLink: string;
     cohortStart: string;
