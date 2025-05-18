@@ -13,10 +13,10 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "baseUrl": ".", // Set the baseUrl for path mapping
+    "baseUrl": ".", 
     "paths": {
-      "@/*": ["./*"], // Resolve all imports starting with "@/..." to project root
-      "@shadcn/ui": ["node_modules/@shadcn/ui/dist"] // Map @shadcn/ui explicitly
+      "@/*": ["./*"], 
+      "@shadcn/ui": ["node_modules/@shadcn/ui/dist"] 
     },
     "plugins": [
       {

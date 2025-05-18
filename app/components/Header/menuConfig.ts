@@ -1,5 +1,5 @@
 // menuConfig.ts
-export type AnimationDirection = 'left' | 'right' | 'top' | 'bottom';
+export type AnimationDirection = "left" | "right" | "top" | "bottom";
 
 export interface MenuItemChild {
   label: string;
@@ -23,16 +23,45 @@ export const menuItems: MenuItem[] = [
     label: "Programs",
     animation: "top",
     children: [
-      { label: "Certified Mobile Forensics Expert", href: "/programs/mobile-forensics" },
-      { label: "Certified Lindows Forensics Expert", href: "/programs/lindows-forensics" },
-      { label: "Certified Mac Forensics Expert", href: "/programs/mac-forensics" },
-      { label: "Certified Cloud Forensics Expert", href: "/programs/cloud-forensics" },
-      { label: "Certified IoT Forensics Expert", href: "/programs/iot-forensics" },
-      { label: "Certified Dark Web Forensics Expert", href: "/programs/dark-web-forensics" },
-      { label: "Certified Linux Forensics Expert", href: "/programs/linux-forensics" },
-      { label: "Computer Hacking Forensics Expert", href: "/programs/computer-hacking-forensics" },
+      {
+        label: "Certified Dark Web Forensics Expert",
+        href: "/certifications/dark-web-forensics",
+      },
+      {
+        label: "Certified Drone Forensics Expert",
+        href: "/certifications/drone-forensics-expert",
+      },
+      {
+        label: "Certified Cloud Forensics Expert",
+        href: "/certifications/cloud-forensics-expert",
+      },
+      {
+        label: "Certified Windows Forensics Expert",
+        href: "/certifications/windows-forensics-expert",
+      },
+      {
+        label: "Certified Mac Forensics Expert",
+        href: "/certifications/mac-forensics-expert",
+      },
+      {
+        label: "Certified Linux Forensics Expert",
+        href: "/certifications/linux-forensics-expert",
+      },
+      {
+        label: "Certified IoT Forensics Expert",
+        href: "/certifications/iot-forensics-expert",
+      },
+      {
+        label: "Certified Mobile Forensics Expert",
+        href: "/certifications/mobile-forensics-expert",
+      },
+      {
+        label: "Computer Hacking Forensic Expert",
+        href: "/certifications/computer-hacking-forensic-expert",
+      },
     ],
   },
+
   {
     label: "Services",
     href: "/services",
@@ -45,7 +74,7 @@ export const menuItems: MenuItem[] = [
   },
   {
     label: "Blogs",
-    href: "/blogs",
+    href: "/blog",
     animation: "left",
   },
   {

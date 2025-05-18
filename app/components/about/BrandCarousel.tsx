@@ -9,7 +9,11 @@ interface Brand {
   link: string;
 }
 
-const BrandCarousel: React.FC = () => {
+interface BrandCarouselProps {
+  fromService?: boolean;
+}
+
+const BrandCarousel: React.FC<BrandCarouselProps> = ({ fromService = false }) => {
   const brands: Brand[] = [
     { id: 1, name: "Brand One", imageUrl: "/brand/1.webp", link: "#" },
     { id: 2, name: "Brand Two", imageUrl: "/brand/2.webp", link: "#" },
@@ -22,7 +26,7 @@ const BrandCarousel: React.FC = () => {
 
   const carouselRef = useRef<HTMLDivElement>(null);
 
-  // State for lightbox
+  // Lightbox state
   const [isOpen, setIsOpen] = useState(false);
   const [currentImage, setCurrentImage] = useState<string>("");
 
@@ -37,70 +41,62 @@ const BrandCarousel: React.FC = () => {
   };
 
   const showPrev = () => {
-    const currentIndex = brands.findIndex(
-      (brand) => brand.imageUrl === currentImage
-    );
-    const prevIndex = (currentIndex - 1 + brands.length) % brands.length;
-    setCurrentImage(brands[prevIndex].imageUrl);
+    const idx = brands.findIndex(b => b.imageUrl === currentImage);
+    const prev = (idx - 1 + brands.length) % brands.length;
+    setCurrentImage(brands[prev].imageUrl);
   };
 
   const showNext = () => {
-    const currentIndex = brands.findIndex(
-      (brand) => brand.imageUrl === currentImage
-    );
-    const nextIndex = (currentIndex + 1) % brands.length;
-    setCurrentImage(brands[nextIndex].imageUrl);
+    const idx = brands.findIndex(b => b.imageUrl === currentImage);
+    const next = (idx + 1) % brands.length;
+    setCurrentImage(brands[next].imageUrl);
   };
 
-  // Continuous scrolling functionality
+  // Continuous scrolling
   useEffect(() => {
     const carousel = carouselRef.current;
-
     if (!carousel) return;
 
-    // Clone the carousel items for seamless looping
     const items = Array.from(carousel.children);
-    items.forEach((item) => {
-      const clonedItem = item.cloneNode(true);
-      carousel.appendChild(clonedItem);
+    items.forEach(item => {
+      carousel.appendChild(item.cloneNode(true));
     });
 
-    const scrollSpeed = 1; // Adjust the speed (higher is slower)
-    let scrollPosition = 0;
+    let scrollPos = 0;
+    const speed = 1;
 
-    const animate = () => {
-      scrollPosition += scrollSpeed;
-
-      // Reset scroll position for seamless looping
-      if (scrollPosition >= carousel.scrollWidth / 2) {
-        scrollPosition = 0;
-      }
-
-      carousel.style.transform = `translateX(-${scrollPosition}px)`;
-      requestAnimationFrame(animate);
+    const loop = () => {
+      scrollPos += speed;
+      if (scrollPos >= carousel.scrollWidth / 2) scrollPos = 0;
+      carousel.style.transform = `translateX(-${scrollPos}px)`;
+      requestAnimationFrame(loop);
     };
 
-    animate();
+    loop();
   }, []);
 
   return (
-    <div className="w-full relative overflow-hidden">
-        <h1 className="heading  text-[30px] md:text-[38px] text-center font-bold pb-0 md:pb-10">
+    <div
+      className={`w-full relative overflow-hidden ${
+        fromService ? "bg-white py-10" : ""
+      }`}
+    >
+      <h1
+        className={`heading text-[30px] md:text-[38px] text-center font-bold pb-0 md:pb-10 ${
+          fromService ? "text-black" : "text-white"
+        }`}
+      >
         Our Client
-          </h1>
+      </h1>
 
       {/* Carousel */}
-      <div className="overflow-hidden  pb-10">
+      <div className={`overflow-hidden ${fromService ? "pb-0" : "pb-10"} `}>
         <div
           ref={carouselRef}
           className="flex"
-          style={{
-            whiteSpace: "nowrap",
-            display: "flex",
-            gap: "2rem",
-          }}
+          style={{ whiteSpace: "nowrap", gap: "2rem" }}
         >
-          {brands.map((brand) => (
+          {brands.map(brand => (
             <button
               key={brand.id}
               onClick={() => openLightbox(brand.imageUrl)}
@@ -120,7 +116,7 @@ const BrandCarousel: React.FC = () => {
         </div>
       </div>
 
-      {/* Lightbox Modal */}
+      {/* Lightbox */}
       {isOpen && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75"
@@ -135,11 +131,11 @@ const BrandCarousel: React.FC = () => {
           </button>
           <div
             className="relative flex items-center justify-center"
-            onClick={(e) => e.stopPropagation()}
+            onClick={e => e.stopPropagation()}
           >
             <button
               onClick={showPrev}
-              className="absolute left-0 ml-4 text-black-100 text-3xl font-bold focus:outline-none z-10"
+              className="absolute left-0 ml-4 text-white text-3xl font-bold focus:outline-none z-10"
               aria-label="Previous Image"
             >
               &#10094;
@@ -156,7 +152,7 @@ const BrandCarousel: React.FC = () => {
             </div>
             <button
               onClick={showNext}
-              className="absolute right-0 mr-4 text-black-100 text-3xl font-bold focus:outline-none z-10"
+              className="absolute right-0 mr-4 text-white text-3xl font-bold focus:outline-none z-10"
               aria-label="Next Image"
             >
               &#10095;
