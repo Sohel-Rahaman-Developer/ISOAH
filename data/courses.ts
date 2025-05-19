@@ -21,8 +21,8 @@ export const courses: Course[] = [
         mentors: '4+ Industry Mentors'
       },
       actions: [
-        { type: 'primary', label: 'Book Demo Now', href: '/demo' },
-        { type: 'secondary', label: 'Download Curriculum', href: '/curriculum.pdf' }
+        { type: 'primary', label: 'Book Demo Now', href: '#' },
+        { type: 'secondary', label: 'Download Curriculum', href: '#' }
       ],
       heroImage: '/dark-web.webp',
       playDemoLink: '#',
@@ -196,8 +196,8 @@ export const courses: Course[] = [
         mentors: '3+ Industry Mentors'
       },
       actions: [
-        { type: 'primary', label: 'Book Demo Now', href: '/demo' },
-        { type: 'secondary', label: 'Download Curriculum', href: '/curriculum.pdf' }
+        { type: 'primary', label: 'Book Demo Now', href: '#' },
+        { type: 'secondary', label: 'Download Curriculum', href: '#' }
       ],
       heroImage: '/images/bootcamp-drone.jpg',
       playDemoLink: '#',
@@ -337,8 +337,8 @@ export const courses: Course[] = [
         mentors: '4+ Industry Mentors'
       },
       actions: [
-        { type: 'primary', label: 'Book Demo Now', href: '/demo' },
-        { type: 'secondary', label: 'Download Curriculum', href: '/curriculum.pdf' }
+        { type: 'primary', label: 'Book Demo Now', href: '#' },
+        { type: 'secondary', label: 'Download Curriculum', href: '#' }
       ],
       heroImage: '/images/bootcamp-cloud.jpg',
       playDemoLink: '#',
@@ -476,8 +476,8 @@ export const courses: Course[] = [
         mentors: '4+ Industry Mentors'
       },
       actions: [
-        { type: 'primary', label: 'Book Demo Now', href: '/demo' },
-        { type: 'secondary', label: 'Download Curriculum', href: '/curriculum.pdf' }
+        { type: 'primary', label: 'Book Demo Now', href: '#' },
+        { type: 'secondary', label: 'Download Curriculum', href: '#' }
       ],
       heroImage: '/images/bootcamp-windows.jpg',
       playDemoLink: '#',
@@ -616,8 +616,8 @@ export const courses: Course[] = [
         mentors: '3+ Industry Mentors'
       },
       actions: [
-        { type: 'primary', label: 'Book Demo Now', href: '/demo' },
-        { type: 'secondary', label: 'Download Curriculum', href: '/curriculum.pdf' }
+        { type: 'primary', label: 'Book Demo Now', href: '#' },
+        { type: 'secondary', label: 'Download Curriculum', href: '#' }
       ],
       heroImage: '/images/bootcamp-mac.jpg',
       playDemoLink: '#',
@@ -756,8 +756,8 @@ export const courses: Course[] = [
         mentors: '4+ Industry Mentors'
       },
       actions: [
-        { type: 'primary', label: 'Book Demo Now', href: '/demo' },
-        { type: 'secondary', label: 'Download Curriculum', href: '/curriculum.pdf' }
+        { type: 'primary', label: 'Book Demo Now', href: '#' },
+        { type: 'secondary', label: 'Download Curriculum', href: '#' }
       ],
       heroImage: '/images/bootcamp-linux.jpg',
       playDemoLink: '#',
@@ -896,8 +896,8 @@ export const courses: Course[] = [
         mentors: '3+ Industry Mentors'
       },
       actions: [
-        { type: 'primary', label: 'Book Demo Now', href: '/demo' },
-        { type: 'secondary', label: 'Download Curriculum', href: '/curriculum.pdf' }
+        { type: 'primary', label: 'Book Demo Now', href: '#' },
+        { type: 'secondary', label: 'Download Curriculum', href: '#' }
       ],
       heroImage: '/images/bootcamp-iot.jpg',
       playDemoLink: '#',
@@ -1036,8 +1036,8 @@ export const courses: Course[] = [
         mentors: '4+ Industry Mentors'
       },
       actions: [
-        { type: 'primary', label: 'Book Demo Now', href: '/demo' },
-        { type: 'secondary', label: 'Download Curriculum', href: '/curriculum.pdf' }
+        { type: 'primary', label: 'Book Demo Now', href: '#' },
+        { type: 'secondary', label: 'Download Curriculum', href: '#' }
       ],
       heroImage: '/images/bootcamp-mobile.jpg',
       playDemoLink: '#',
@@ -1176,8 +1176,8 @@ export const courses: Course[] = [
         mentors: '5+ Industry Mentors'
       },
       actions: [
-        { type: 'primary', label: 'Book Demo Now', href: '/demo' },
-        { type: 'secondary', label: 'Download Curriculum', href: '/curriculum.pdf' }
+        { type: 'primary', label: 'Book Demo Now', href: '#' },
+        { type: 'secondary', label: 'Download Curriculum', href: '#' }
       ],
       heroImage: '/images/bootcamp-chfe.jpg',
       playDemoLink: '#',
