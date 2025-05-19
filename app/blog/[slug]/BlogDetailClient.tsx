@@ -98,71 +98,75 @@ export default function BlogDetailClient({ post }: Props) {
           />
           <div className="absolute top-0 left-0 bg-[#0000004a] w-full h-full" />
         </motion.div>
+        <div className="bg-white">
+          {/* 2) Content Block */}
+          <motion.div
+            className="bg-white mx-auto p-5 sm:p-10 md:p-8 relative"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <div className="max-w-2xl mx-auto mt-6 text-white rounded-b-lg p-6">
+              {/* Categories */}
+              <motion.div variants={categoriesVariants} className="mb-2">
+                {post.categories.map((cat) => (
+                  <a
+                    key={cat}
+                    href="#"
+                    className="text-xs text-indigo-600 uppercase font-medium hover:text-gray-900 mr-2"
+                  >
+                    {cat}
+                  </a>
+                ))}
+              </motion.div>
 
-        {/* 2) Content Block */}
-        <motion.div
-          className="bg-white mx-auto p-5 sm:p-10 md:p-8 relative"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          <div className="max-w-2xl mx-auto mt-6 text-white rounded-b-lg p-6">
-            {/* Categories */}
-            <motion.div variants={categoriesVariants} className="mb-2">
-              {post.categories.map((cat) => (
-                <a
-                  key={cat}
-                  href="#"
-                  className="text-xs text-indigo-600 uppercase font-medium hover:text-gray-900 mr-2"
-                >
-                  {cat}
-                </a>
-              ))}
-            </motion.div>
-
-            {/* Title */}
-            <motion.h1
-              variants={titleVariants}
-              className="text-gray-900 font-bold text-3xl mb-4"
-            >
-              {post.title}
-            </motion.h1>
-
-            {/* Author */}
-            <motion.p
-              variants={authorVariants}
-              className="text-gray-700 text-xs mb-6"
-            >
-              Written By:{" "}
-              <a
-                href="#"
-                className="text-indigo-600 font-medium hover:text-gray-900"
+              {/* Title */}
+              <motion.h1
+                variants={titleVariants}
+                className="text-gray-900 font-bold text-3xl mb-4"
               >
-                {post.author.name}
-              </a>
-            </motion.p>
+                {post.title}
+              </motion.h1>
 
-            {/* Main Content */}
-            <motion.div
-              variants={bodyVariants}
-              className="prose prose-lg text-gray-800"
-              dangerouslySetInnerHTML={{ __html: post.content }}
-            />
-
-            {/* Tags */}
-            <motion.div variants={tagVariants} className="mt-8 flex flex-wrap gap-2">
-              {post.tags.map((tag) => (
+              {/* Author */}
+              <motion.p
+                variants={authorVariants}
+                className="text-gray-700 text-xs mb-6"
+              >
+                Written By:{" "}
                 <a
-                  key={tag}
                   href="#"
-                  className="inline-block text-xs text-indigo-600 font-medium hover:text-gray-900 px-3 py-1 border border-indigo-200 rounded-full"
+                  className="text-indigo-600 font-medium hover:text-gray-900"
                 >
-                  {tag}
+                  {post.author.name}
                 </a>
-              ))}
-            </motion.div>
-          </div>
-        </motion.div>
+              </motion.p>
+
+              {/* Main Content */}
+              <motion.div
+                variants={bodyVariants}
+                className="prose prose-lg text-gray-800"
+                dangerouslySetInnerHTML={{ __html: post.content }}
+              />
+
+              {/* Tags */}
+              <motion.div
+                variants={tagVariants}
+                className="mt-8 flex flex-wrap gap-2"
+              >
+                {post.tags.map((tag) => (
+                  <a
+                    key={tag}
+                    href="#"
+                    className="inline-block text-xs text-indigo-600 font-medium hover:text-gray-900 px-3 py-1 border border-indigo-200 rounded-full"
+                  >
+                    {tag}
+                  </a>
+                ))}
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
 
         <div className="px-6 max-w-7xl mx-auto">
           <hr />
