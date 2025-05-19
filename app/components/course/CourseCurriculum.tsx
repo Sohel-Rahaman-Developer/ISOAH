@@ -89,13 +89,13 @@ export default function CourseCurriculum({
           <span className="inline-block bg-blue-600 text-white text-xs uppercase font-semibold mr-3 px-2 py-1 rounded-full">
             with
           </span>
-          <Image
+          {/* <Image
             src="/images/placement-support-illu.png"
             alt="Placement Support"
             width={40}
             height={40}
             className="h-10 w-10 mr-3"
-          />
+          /> */}
           <div>
             <p className="text-sm text-gray-700">Placement Support</p>
           </div>
