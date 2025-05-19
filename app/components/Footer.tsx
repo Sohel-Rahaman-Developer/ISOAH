@@ -115,7 +115,7 @@ export const Footer: React.FC = () => {
 
               <ul className="mt-6 space-y-4 text-sm">
                 <li>
-                  <Link href="/home" legacyBehavior>
+                  <Link href="/" legacyBehavior>
                     <a className="text-gray-400 transition hover:opacity-75">
                       Home
                     </a>
