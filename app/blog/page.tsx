@@ -1,6 +1,5 @@
 // app/blog/page.tsx
 "use client"
-import Link from "next/link";
 import { Footer } from "../components/Footer";
 import Cursor from "../Cursor";
 import Navbar from "../components/Header/Navbar";

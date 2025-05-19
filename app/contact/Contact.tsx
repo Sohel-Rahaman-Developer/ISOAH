@@ -60,17 +60,17 @@ export default function Contact() {
               marginHeight={0}
               marginWidth={0}
               scrolling="no"
-              src="https://www.google.com/maps/embed?pb=!1m12!1m8!1m3!1d3684.236452074432!2d88.4351563!3d22.5702581!3m2!1i1024!2i768!4f13.1!2m1!1siframe%20for%204th%20Floor%20Plot%20J%20Kariwala%20Towers%201-5%20opposite%20TCS%20Eden%20EP%20Block%20Sector%20V%20Bidhannagar%20Kolkata%20West%20Bengal%20700091!5e0!3m2!1sen!2sin!4v1742748782313!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.209992135918!2d88.4337142750777!3d22.57124807949263!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a02757356d30309%3A0x35b3b0e010736788!2sForensicsHQ%20(Digital%20Forensics%20Training%20Institute)!5e0!3m2!1sen!2sin!4v1747632791560!5m2!1sen!2sin"
               style={{ filter: 'grayscale(0.3) contrast(0.8) opacity(1)' }}
             ></iframe>
-
             {/* Address Card */}
             <div className="bg-gray-900 relative flex flex-wrap py-6 rounded shadow-md">
               <div className="lg:w-1/2 px-6">
                 <h2 className="title-font font-semibold text-gray-100 tracking-widest text-xs">ADDRESS</h2>
                 <p className="mt-1 text-gray-400">
-                  4th Floor, Plot J, Kariwala Towers<br/>
-                  1-5, opposite TCS Eden, EP Block<br/>
+                  <span>ForensicsHQ</span><br/>
+                  Kariwala Towers , 4th Floor, Plot J <br/>
+                  1-5, EP Block , opposite TCS Eden<br/>
                   Sector V, Bidhannagar, Kolkata, West Bengal 700091
                 </p>
               </div>

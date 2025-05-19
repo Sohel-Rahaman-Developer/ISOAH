@@ -86,7 +86,7 @@ export default function BlogDetailClient({ post }: Props) {
 
         {/* 1) Hero Image */}
         <motion.div
-          className="relative mb-8"
+          className="relative"
           variants={imageVariants}
           initial="hidden"
           animate="visible"

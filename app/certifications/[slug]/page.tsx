@@ -1,30 +1,33 @@
+// app/certifications/[slug]/page.tsx
 import { notFound } from "next/navigation";
 import { courses } from "@/data/courses";
 import type { Course } from "@/app/types/course";
-import { Footer } from "../../components/Footer";
-import Navbar from "../../components/Header/Navbar";
-import CourseDetails from "../../components/course/CourseDetails";
-import CourseSecondComponent from "../../components/course/CourseSecondComponent";
-import CourseCurriculum from "../../components/course/CourseCurriculum";
-import ToolsShowcase from "../../components/course/ToolsShowcase";
-import DemoCertificate from "../../components/course/DemoCertificate";
+
+import Navbar from "@/app/components/Header/Navbar";
+import CourseDetails from "@/app/components/course/CourseDetails";
+import CourseSecondComponent from "@/app/components/course/CourseSecondComponent";
+import CourseCurriculum from "@/app/components/course/CourseCurriculum";
+import ToolsShowcase from "@/app/components/course/ToolsShowcase";
+import DemoCertificate from "@/app/components/course/DemoCertificate";
 import Cursor from "@/app/Cursor";
+import { Footer } from "@/app/components/Footer";
 
-interface PageProps {
-  params: { slug: string };
-}
-
+// statically generate one page for each `slug`
 export function generateStaticParams() {
-  return courses.map((c) => ({ slug: c.slug }));
+  return courses.map(({ slug }) => ({ slug }));
 }
 
-export default async function Page(props: PageProps) {
-  // Awaiting params before destructuring to avoid the sync access error
-  const { slug } = await Promise.resolve(props.params);
-  const course: Course | undefined = courses.find((c) => c.slug === slug);
-  if (!course) {
-    notFound();
-  }
+type Params = { slug: string };
+
+export default async function Page({
+  params,
+}: {
+  // ← must be Promise<Params>, never a union
+  params: Promise<Params>;
+}) {
+  const { slug } = await params; // ← await your params
+  const course = courses.find((c) => c.slug === slug) as Course | undefined;
+  if (!course) notFound();
 
   return (
     <main className="flex justify-center items-center flex-col overflow-hidden mx-auto sm:px-10 px-5">

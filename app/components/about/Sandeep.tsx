@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaUserTie, FaShieldAlt, FaLaptopCode } from 'react-icons/fa';
+import Image from 'next/image';
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -65,10 +66,12 @@ const SandeepProfile = () => {
               transition={{ duration: 1, delay: 0.4 }}
             >
               <div className="w-50 h-50 rounded-full inline-flex items-center justify-center bg-gray-200 text-white overflow-hidden">
-                <img
+                <Image
                   alt="Sandeep Sengupta"
                   src="https://forensicshq.com/wp-content/uploads/2024/05/Sandeep-Sengupta.jpg"
-                  className="w-full h-full object-cover"
+                  width={300}
+                  height={300}
+                  className="max-w-[250px] object-cover"
                 />
               </div>
               <div className="flex flex-col items-center text-center justify-center mt-4">

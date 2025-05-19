@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaUserTie, FaLaptopCode } from 'react-icons/fa';
+import Image from 'next/image';
 
 const slideInLeft = {
   hidden: { opacity: 0, x: -100 },
@@ -38,10 +39,12 @@ const ManagerProfile = () => {
               transition={{ duration: 1, delay: 0.2 }}
             >
               <div className="w-50 h-50 rounded-full inline-flex items-center justify-center bg-gray-700 text-white overflow-hidden">
-                <img
+                <Image
                   alt="Anubhav Khettry"
                   src="https://forensicshq.com/wp-content/uploads/2024/05/Anubhav-Khettry-faculty.jpg"
-                  className="w-full h-full object-cover"
+                  width={300}
+                  height={300}
+                  className="max-w-[250px] h-full object-cover"
                 />
               </div>
               <div className="flex flex-col items-center text-center justify-center mt-4">

@@ -7,6 +7,7 @@ import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import { FaQuoteRight } from "react-icons/fa";
+import Image from "next/image";
 
 interface Testimonial {
   quote: string;
@@ -91,10 +92,12 @@ export default function TestimonialsCarousel() {
                   {quote}
                 </p>
                 <div className="flex items-center">
-                  <img
+                   <Image
                     src={logo}
                     alt={client}
-                    className="w-12 h-12 object-contain rounded-full bg-white p-2"
+                    width={48}
+                    height={48}
+                    className="object-contain rounded-full bg-white p-2 w-12 h-12"
                   />
                   <span className="ml-4 text-white font-semibold">
                     {client}

@@ -62,7 +62,7 @@ const ParallaxSlider: React.FC<ParallaxSliderProps> = ({ slides }) => {
                 fadeEffect={{ crossFade: true }}
                 autoplay={{ delay: 4000, disableOnInteraction: false }}
                 loop={true}
-                speed={1000}
+                speed={8000}
                 onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
                 className="w-full h-full "
             >

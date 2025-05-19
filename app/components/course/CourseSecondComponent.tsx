@@ -4,6 +4,7 @@
 import React from "react";
 import type { Course } from "@/app/types/course";
 import { FaRegStar, FaLightbulb, FaHourglassHalf } from "react-icons/fa";
+import Image from "next/image";
 
 interface CourseSecondComponentProps {
   overview: Course["overview"];
@@ -20,9 +21,11 @@ export default function CourseSecondComponent({
         <div className="relative flex flex-col md:flex-row items-center gap-8">
           {/* Left: Large Image */}
           <div className="w-full md:w-1/2 flex justify-end relative">
-            <img
+            <Image
               src="https://forensicshq.com/wp-content/uploads/2024/05/dark-web-course-brief-left.jpg"
               alt="Course Brief"
+              width={600}
+              height={400}
               className="w-full h-auto max-h-[700px] rounded-lg shadow-lg object-cover"
             />
             {/* Center: Floating Icons */}

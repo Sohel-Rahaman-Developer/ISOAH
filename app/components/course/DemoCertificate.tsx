@@ -3,6 +3,7 @@
 import React from "react";
 import type { Course } from "@/app/types/course";
 import { FiAward, FiUserCheck, FiTrendingUp } from "react-icons/fi";
+import Image from "next/image";
 
 interface DemoCertificateProps {
   features: Course["certificateFeatures"];
@@ -16,15 +17,17 @@ const iconMap = {
 
 export default function DemoCertificate({ features }: DemoCertificateProps) {
   return (
-    <section className="bg-[#000319] py-16">
+    <section className="bg-[#000319] py-16 md:px-0 px-4">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-8">
         {/* Certificate Image */}
         <div className="relative w-full md:w-1/3 flex justify-center md:justify-start">
           <div className="absolute inset-0 bg-blue-700 rounded-xl transform md:translate-x-6 md:-translate-y-6"></div>
-          <img
+          <Image
             src={features[0]?.icon /* you can swap this for a dedicated image */}
             alt="Certificate"
-            className="relative w-64 md:w-auto rounded-xl shadow-xl"
+            width={400}
+            height={300}
+            className="relative important-w-full md:w-auto rounded-xl shadow-xl"
           />
         </div>
 

@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaUserTie,  FaLaptopCode } from 'react-icons/fa';
+import Image from 'next/image';
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -28,10 +29,12 @@ const GulabProfile = () => {
               transition={{ duration: 1 }}
             >
               <div className="w-50 h-50 rounded-full inline-flex items-center justify-center bg-gray-200 text-white overflow-hidden">
-                <img
-                  alt="Gulab Mondal"
+                 <Image
                   src="https://forensicshq.com/wp-content/uploads/2024/05/Gulab-Mondal-faculty.jpg"
-                  className="w-full h-full object-cover"
+                  alt="Gulab Mondal"
+                  width={200}
+                  height={200}
+                  className="max-w-[250px] object-cover"
                 />
               </div>
               <div className="flex flex-col items-center text-center justify-center mt-4">

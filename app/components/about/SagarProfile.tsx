@@ -1,8 +1,9 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import { FaUserTie, FaLaptopCode, FaShieldAlt } from 'react-icons/fa';
+import React from "react";
+import { motion } from "framer-motion";
+import { FaUserTie, FaLaptopCode, FaShieldAlt } from "react-icons/fa";
+import Image from "next/image";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -37,7 +38,11 @@ const SagarProfile = () => {
                   <FaLaptopCode className="text-indigo-500" /> Experience:
                 </h3>
                 <p className="leading-relaxed text-gray-400">
-                  Have an experience of 5 years in handling various VAPT projects including Web Applications, Android, IOS, Cloud, Source Code Reviews, Enterprise Network and Active Directory environments. Have also performed various security testing for AMAZON AWS.
+                  Have an experience of 5 years in handling various VAPT
+                  projects including Web Applications, Android, IOS, Cloud,
+                  Source Code Reviews, Enterprise Network and Active Directory
+                  environments. Have also performed various security testing for
+                  AMAZON AWS.
                 </p>
               </motion.div>
               {/* Area of Expertise */}
@@ -49,7 +54,9 @@ const SagarProfile = () => {
                   <FaShieldAlt className="text-indigo-500" /> Area of Expertise:
                 </h3>
                 <p className="leading-relaxed text-gray-400">
-                  Active Directory Penetration Testing and Hardening of Enterprise Network Security, OT/SCADA Penetration Testing and IOT/Hardware based hacking and penetration testing.
+                  Active Directory Penetration Testing and Hardening of
+                  Enterprise Network Security, OT/SCADA Penetration Testing and
+                  IOT/Hardware based hacking and penetration testing.
                 </p>
               </motion.div>
             </motion.div>
@@ -61,10 +68,12 @@ const SagarProfile = () => {
               transition={{ duration: 1, delay: 0.5 }}
             >
               <div className="w-50 h-50 rounded-full inline-flex items-center justify-center bg-gray-200 text-white overflow-hidden">
-                <img
-                   alt="Sagar Neogi"
-                   src="https://forensicshq.com/wp-content/uploads/2024/05/Sagar-Neogi-faculty.jpg" 
-                  className="w-full h-full object-cover"
+                <Image
+                  alt="Sagar Neogi"
+                  src="https://forensicshq.com/wp-content/uploads/2024/05/Sagar-Neogi-faculty.jpg"
+                  width={300}
+                  height={300}
+                  className="max-w-[250px] h-full object-cover"
                 />
               </div>
               <div className="flex flex-col items-center text-center justify-center mt-4 min-w-[300px]">

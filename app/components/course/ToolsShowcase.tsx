@@ -2,6 +2,7 @@
 
 import React from "react";
 import type { Course } from "@/app/types/course";
+import Image from "next/image";
 
 interface ToolsShowcaseProps {
   tools: Course["tools"];
@@ -25,9 +26,11 @@ export default function ToolsShowcase({ tools }: ToolsShowcaseProps) {
               key={tool.name}
               className="flex items-center justify-center bg-white bg-opacity-20 rounded-lg p-6"
             >
-              <img
+              <Image
                 src={tool.src}
                 alt={tool.name}
+                width={100}
+                height={100}
                 className="max-h-12 object-contain"
               />
             </div>

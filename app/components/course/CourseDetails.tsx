@@ -3,6 +3,7 @@
 import React from "react";
 import { FaLinkedin, FaUserTie } from "react-icons/fa";
 import type { Course } from "@/app/types/course";
+import Image from "next/image";
 
 interface CourseDetailsProps {
   details: Course["details"];
@@ -70,9 +71,11 @@ export default function CourseDetails({ details }: CourseDetailsProps) {
           {/* Right Column */}
           <div className="bg-white rounded-lg shadow-lg overflow-hidden">
             <div className="relative">
-              <img
+              <Image
                 src={details.heroImage}
                 alt={details.title}
+                width={500}
+                height={300}
                 className="w-full h-48 object-cover"
               />
               <a

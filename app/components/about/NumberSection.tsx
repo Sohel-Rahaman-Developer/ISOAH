@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 'use client';
 
 import React, { useEffect } from 'react';
@@ -28,13 +27,11 @@ const NumbersSection: React.FC<NumbersSectionProps> = ({ fromService = false }) 
   ];
 
   return (
-    <section
-      className={`py-5 overflow-hidden ${fromService ? 'bg-white' : '' }`}
-    >
-      <div className={`max-w-7xl mx-auto px-5 py-16 ${fromService ? '' : 'shadow-2xl' } rounded-xl `}>
+    <section className={`py-5 overflow-hidden ${fromService ? 'bg-white' : ''}`}>
+      <div className={`max-w-7xl mx-auto px-5 py-16 ${fromService ? '' : 'shadow-2xl'} rounded-xl`}>
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           {/* Left Section */}
-          <div className={`text-center md:text-left`}>
+          <div className="text-center md:text-left">
             <h2
               className={`text-3xl sm:text-4xl font-bold mb-4 ${
                 fromService ? 'text-black' : 'text-white'
@@ -56,11 +53,7 @@ const NumbersSection: React.FC<NumbersSectionProps> = ({ fromService = false }) 
           {/* Right Section */}
           <div className="flex flex-wrap justify-center md:justify-start gap-12">
             {data.map((item, index) => (
-              <CountUpCard
-                key={index}
-                item={item}
-                fromService={fromService}
-              />
+              <CountUpCard key={index} item={item} fromService={fromService} />
             ))}
           </div>
         </div>
@@ -79,15 +72,9 @@ interface CountUpCardProps {
   fromService?: boolean;
 }
 
-const CountUpCard: React.FC<CountUpCardProps> = ({
-  item,
-  fromService = false,
-}) => {
+const CountUpCard: React.FC<CountUpCardProps> = ({ item, fromService = false }) => {
   const controls = useAnimation();
-  const { ref, inView } = useInView({
-    threshold: 0.5,
-    triggerOnce: true,
-  });
+  const { ref, inView } = useInView({ threshold: 0.5, triggerOnce: true });
 
   const endValue = item.isThousand ? item.number / 1000 : item.number;
   const suffix = item.isThousand ? 'K+' : item.suffix;
@@ -96,14 +83,12 @@ const CountUpCard: React.FC<CountUpCardProps> = ({
     if (inView) controls.start('visible');
   }, [controls, inView]);
 
-  const bgClass = fromService
-    ? 'bg-gradient-to-tr from-black-100 to-pink-400 text-white'
-    : 'bg-gradient-to-tr from-black-100 to-pink-400 text-white';
+  const bgClass = 'bg-gradient-to-tr from-black-100 to-pink-400 text-white';
 
   return (
     <motion.div
       ref={ref}
-      className={`text-center p-6 rounded-2xl shadow-lg ${bgClass}`}
+      className={`text-center p-6 rounded-2xl ${fromService ? "" : ""} shadow-lg ${bgClass}`}
       initial="hidden"
       animate={controls}
       variants={cardVariants}
@@ -129,11 +114,7 @@ interface CountUpAnimatedProps {
   start: boolean;
 }
 
-const CountUpAnimated: React.FC<CountUpAnimatedProps> = ({
-  end,
-  suffix,
-  start,
-}) => {
+const CountUpAnimated: React.FC<CountUpAnimatedProps> = ({ end, suffix, start }) => {
   const [current, setCurrent] = React.useState(0);
 
   useEffect(() => {

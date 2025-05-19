@@ -562,6 +562,7 @@
     text-decoration: underline;
     text-underline-offset: 4px;
   }
-
-  
+  .important-w-full {
+    width: 100% !important;
+  }
 }

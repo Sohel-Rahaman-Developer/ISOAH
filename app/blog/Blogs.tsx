@@ -3,6 +3,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -45,11 +46,7 @@ export default function Blogs() {
   return (
     <div className="relative z-10 text-white pt-20">
       {/* Carousel */}
-      <motion.div
-        variants={carouselVariants}
-        initial="hidden"
-        animate="visible"
-      >
+      <motion.div variants={carouselVariants} initial="hidden" animate="visible">
         <Swiper
           modules={[EffectFade, Autoplay]}
           effect="fade"
@@ -107,10 +104,12 @@ export default function Blogs() {
                     </h3>
                     <p className="opacity-60 mb-auto">{post.excerpt}</p>
                     <div className="flex items-center mt-4">
-                      <img
+                      <Image
                         src={post.author.avatar}
                         alt={post.author.name}
-                        className="w-10 h-10 rounded-full mr-3"
+                        width={40}
+                        height={40}
+                        className="rounded-full mr-3"
                       />
                       <div>
                         <div>{post.author.name}</div>
@@ -124,11 +123,12 @@ export default function Blogs() {
                     href={`/blog/${post.slug}`}
                     className="flex w-full h-full bg-gray-800 rounded overflow-hidden"
                   >
-                    <div className="w-2/6">
-                      <img
+                    <div className="w-2/6 relative h-full">
+                      <Image
                         src={post.image}
                         alt={post.title}
-                        className="object-cover h-full w-full"
+                        fill
+                        className="object-cover"
                       />
                     </div>
                     <div className="w-4/6 p-5 flex flex-col">
@@ -137,10 +137,12 @@ export default function Blogs() {
                       </h3>
                       <p className="opacity-60 mb-auto">{post.excerpt}</p>
                       <div className="flex items-center mt-4">
-                        <img
+                        <Image
                           src={post.author.avatar}
                           alt={post.author.name}
-                          className="w-10 h-10 rounded-full mr-3"
+                          width={40}
+                          height={40}
+                          className="rounded-full mr-3"
                         />
                         <div>
                           <div>{post.author.name}</div>
