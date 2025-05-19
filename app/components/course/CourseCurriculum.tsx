@@ -11,7 +11,7 @@ import {
 } from "react-icons/fi";
 import { AiOutlineProject } from "react-icons/ai";
 import type { Course } from "@/app/types/course";
-import Image from "next/image";
+// import Image from "next/image";
 
 interface CourseCurriculumProps {
   milestones: Course["curriculum"];

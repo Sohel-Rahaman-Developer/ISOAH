@@ -24,7 +24,7 @@ export const courses: Course[] = [
         { type: 'primary', label: 'Book Demo Now', href: '/demo' },
         { type: 'secondary', label: 'Download Curriculum', href: '/curriculum.pdf' }
       ],
-      heroImage: '/images/bootcamp-class.jpg',
+      heroImage: '/dark-web.webp',
       playDemoLink: '#',
       cohortStart: '2025-05-12',
       pricing: {
@@ -155,10 +155,10 @@ export const courses: Course[] = [
     tools: [
       { name: 'Tor Browser', src: '/images/tools/tor-logo.png' },
       { name: 'InTrack', src: '/images/tools/intrack-logo.png' },
-      { name: 'Hunchly', src: '/images/tools/hunchly-logo.png' },
+      { name: 'Hunchly', src: '/images/tools/hunchly-logo.webp' },
       { name: 'Magnet Forensics', src: '/images/tools/magnet-logo.png' },
-      { name: 'InsiderFoot', src: '/images/tools/insiderfoot-logo.png' },
-      { name: 'Autopsy', src: '/images/tools/autopsy-logo.png' }
+      // { name: 'InsiderFoot', src: '/images/tools/insiderfoot-logo.png' },
+      // { name: 'Autopsy', src: '/images/tools/autopsy-logo.png' }
     ],
     certificateFeatures: [
       {

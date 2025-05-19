@@ -31,7 +31,7 @@ export default function ToolsShowcase({ tools }: ToolsShowcaseProps) {
                 alt={tool.name}
                 width={100}
                 height={100}
-                className="max-h-12 object-contain"
+                className="max-w-full object-contain"
               />
             </div>
           ))}

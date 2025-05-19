@@ -12,7 +12,7 @@ interface CourseDetailsProps {
 export default function CourseDetails({ details }: CourseDetailsProps) {
   return (
     <section className="bg-[#000319] py-12">
-      <div className="container mx-auto px-4 max-w-7xl">
+      <div className="container mx-auto px-4 max-w-7xl overflow-hidden">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
           {/* Left Column */}
           <div className="text-white space-y-6">
@@ -76,11 +76,11 @@ export default function CourseDetails({ details }: CourseDetailsProps) {
                 alt={details.title}
                 width={500}
                 height={300}
-                className="w-full h-48 object-cover"
+                className="w-full h-full max-h-[250px] object-cover"
               />
               <a
                 href={details.playDemoLink}
-                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white bg-opacity-80 rounded-full p-3 hover:bg-opacity-100 transition"
+                className="absolute top-1/2 left-1/2 transform text-black -translate-x-1/2 -translate-y-1/2 bg-white bg-opacity-80 rounded-full h-12 w-12 flex justify-center ps-[3px] items-center hover:bg-opacity-100 transition"
                 aria-label="Play Demo"
               >
                 ▶

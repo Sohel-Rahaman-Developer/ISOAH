@@ -3,6 +3,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function WhyAppropriate() {
   return (
@@ -14,19 +15,18 @@ export default function WhyAppropriate() {
             Why Are We Appropriate for You?
           </h2>
           <p className="text-base sm:text-lg lg:text-xl leading-relaxed mb-8">
-            Running with 26+ years of experience dedicated industry professionals
-            specializing in digital security from incident handling to IoT
-            forensics. Our services are designed for entities and individuals
-            aiming to enhance their digital resilience and safeguard sensitive
-            data.
+            Running with 26+ years of experience dedicated industry
+            professionals specializing in digital security from incident
+            handling to IoT forensics. Our services are designed for entities
+            and individuals aiming to enhance their digital resilience and
+            safeguard sensitive data.
           </p>
           <hr className="border-gray-700 mb-8" />
-          <button
-            type="button"
-            className="inline-block bg-white text-gray-900 font-medium px-6 py-3 rounded-md hover:bg-gray-200 transition"
-          >
-            Click Here
-          </button>
+          <Link href="/about" legacyBehavior>
+            <span className="inline-block cursor-pointer bg-white text-gray-900 font-medium px-6 py-3 rounded-md hover:bg-gray-200 transition">
+              Click Here
+            </span>
+          </Link>
         </div>
 
         {/* Image Block */}
