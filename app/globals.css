@@ -565,4 +565,16 @@
   .important-w-full {
     width: 100% !important;
   }
+  .programs {
+    background-image: linear-gradient(
+      to right top,
+      #582a90,
+      #811880,
+      #9c006c,
+      #ad0056,
+      #b61a3f
+    );
+    background-position: left Top;
+    background-repeat: no-repeat;
+  }
 }

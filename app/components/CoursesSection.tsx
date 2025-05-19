@@ -23,7 +23,14 @@ const localLoader = ({ src }: ImageLoaderProps) => {
 };
 
 const CoursesSection: React.FC = () => (
-  <section className="bg-gradient-to-t from-black-100 to-white py-12" id="programs">
+  <section
+    id="programs"
+    className="py-12 min-h-[60vh] flex items-center justify-center"
+    style={{
+      background:
+        "linear-gradient(180deg, rgba(255, 255, 255, 0.97) 80%, #000319 100%)",
+    }}
+  >
     <div className="max-w-7xl mx-auto px-4">
       <h1 className="text-center text-[30px] md:text-[38px] font-bold text-black mb-10">
         Our Certifications
@@ -46,11 +53,13 @@ const CoursesSection: React.FC = () => (
               className="
                 block
                 border border-indigo-900 
-                rounded-b-3xl rounded-tl-3xl 
-                p-6 shadow-lg bg-white 
+                rounded-b-[50px] rounded-tl-[50px] 
+                p-5 shadow-lg programs 
                 h-full flex flex-col 
                 transform transition-all duration-300
-                hover:scale-105 hover:shadow-2xl
+                hover:scale-105 
+                hover:translate-y-[-10px]
+                shadow-black hover:shadow-black
               "
             >
               <div className="relative w-full h-60 rounded-lg mb-4 overflow-hidden">
@@ -63,10 +72,10 @@ const CoursesSection: React.FC = () => (
                   className="object-cover"
                 />
               </div>
-              <h2 className="text-2xl font-bold text-black mb-2">
+              <h2 className="text-2xl font-bold text-white mb-2">
                 {course.title}
               </h2>
-              <p className="text-sm text-gray-600 flex-grow">{course.des}</p>
+              <p className="text-sm text-gray-100 flex-grow">{course.des}</p>
               <div className="mt-4 text-center">
                 <span className="inline-block bg-indigo-900 text-white text-sm px-4 py-2 rounded-full">
                   View Details →
