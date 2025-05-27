@@ -1,11 +1,16 @@
 {
   "compilerOptions": {
     "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
     "noEmit": true,
+    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "node",
@@ -13,17 +18,37 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "baseUrl": ".", 
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"], 
-      "@shadcn/ui": ["node_modules/@shadcn/ui/dist"] 
+      "@/*": [
+        "./*"
+      ],
+      "@shadcn/ui": [
+        "node_modules/@shadcn/ui/dist"
+      ]
     },
     "plugins": [
       {
         "name": "next"
       }
+    ],
+    "types": [
+      "node"
     ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "app/**/*",
+    "lib/**/*",
+    "models/**/*",
+    "next-env.d.ts",
+    "schemas/**/*",
+    "types/**/*",
+    "utils/**/*",
+    ".next/types/**/*.ts"
+, "scripts/genPasetoKeys.js"  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
