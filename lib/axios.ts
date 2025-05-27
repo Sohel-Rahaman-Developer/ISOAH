@@ -6,15 +6,22 @@ import axios, {
 } from 'axios'
 
 export function setAccessToken(token: string) {
-  // keep for response-refresh flow
   sessionStorage.setItem('accessToken', token)
+}
+
+function clearAuthAndRedirect() {
+  // clear the in-memory and persisted tokens
+  sessionStorage.removeItem('accessToken')
+  // you could also clear any auth context state here if you expose it
+  // force navigation to login
+  window.location.href = '/admin'
 }
 
 const api = axios.create({
   baseURL: '/api',
+  withCredentials: true, // send/receive httpOnly refresh cookie
 })
 
-// 1) Attach token on every request
 api.interceptors.request.use((config) => {
   const token = sessionStorage.getItem('accessToken')
   if (token) {
@@ -24,7 +31,6 @@ api.interceptors.request.use((config) => {
   return config
 })
 
-// 2) Handle 401 → silent refresh → retry queue
 let isRefreshing = false
 type QueueEntry = {
   resolve: (value: AxiosResponse | Promise<AxiosResponse>) => void
@@ -33,14 +39,14 @@ type QueueEntry = {
 }
 let queue: QueueEntry[] = []
 
-const processQueue = (error: unknown, token: string | null = null) => {
+const processQueue = (err: unknown, newToken: string | null = null) => {
   queue.forEach(({ resolve, reject, config }) => {
-    if (token) {
+    if (newToken) {
       config.headers = config.headers ?? {}
-      config.headers['Authorization'] = `Bearer ${token}`
+      config.headers['Authorization'] = `Bearer ${newToken}`
       resolve(api(config))
     } else {
-      reject(error)
+      reject(err)
     }
   })
   queue = []
@@ -48,38 +54,44 @@ const processQueue = (error: unknown, token: string | null = null) => {
 
 api.interceptors.response.use(
   (res) => res,
-  (err: AxiosError) => {
-    const originalReq = err.config as InternalAxiosRequestConfig & { _retry?: boolean }
+  (error: AxiosError) => {
+    const originalReq = error.config as InternalAxiosRequestConfig & { _retry?: boolean }
 
-    if (err.response?.status === 401 && !originalReq._retry) {
+    // 1) If it's a 403 from a protected endpoint (not refresh), log out
+    if (error.response?.status === 403 && !originalReq.url?.includes('/auth/refresh')) {
+      clearAuthAndRedirect()
+      return Promise.reject(error)
+    }
+
+    // 2) Your existing 401→refresh flow
+    if (error.response?.status === 401 && !originalReq._retry) {
       if (isRefreshing) {
-        return new Promise<AxiosResponse>((resolve, reject) => {
-          queue.push({ resolve, reject, config: originalReq })
+        return new Promise<AxiosResponse>((res, rej) => {
+          queue.push({ resolve: res, reject: rej, config: originalReq })
         })
       }
-
       originalReq._retry = true
       isRefreshing = true
 
       return new Promise<AxiosResponse>(async (resolve, reject) => {
         try {
-          const { data } = await axios.get<{ accessToken: string }>('/api/auth/refresh')
-          const newToken = data.accessToken
-          setAccessToken(newToken)        // writes to sessionStorage :contentReference[oaicite:3]{index=3}
-          processQueue(null, newToken)
+          const { data } = await api.get<{ accessToken: string }>('/auth/refresh')
+          const fresh = data.accessToken
+          setAccessToken(fresh)
+          processQueue(null, fresh)
           resolve(api(originalReq))
-        } catch (refreshError) {
-          processQueue(refreshError, null)
-          window.location.href = '/admin/login'
-          reject(refreshError)
+        } catch (refreshErr) {
+          processQueue(refreshErr, null)
+          clearAuthAndRedirect()
+          reject(refreshErr)
         } finally {
           isRefreshing = false
         }
       })
     }
 
-    return Promise.reject(err)
-  },
+    return Promise.reject(error)
+  }
 )
 
 export default api

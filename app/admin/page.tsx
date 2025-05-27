@@ -1,4 +1,3 @@
-// app/admin/login/page.tsx
 'use client'
 
 import React, { useState, useEffect } from 'react'
@@ -6,13 +5,13 @@ import { useAuth } from '../context/AuthContext'
 import { useRouter } from 'next/navigation'
 
 export default function LoginPage() {
-  const { accessToken, login } = useAuth()
   const router = useRouter()
+  const { accessToken, login } = useAuth()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState<string | null>(null)
+  const [loading, setLoading] = useState(false)
 
-  // If already authenticated, redirect to dashboard
   useEffect(() => {
     if (accessToken) {
       router.replace('/admin/dashboard')
@@ -22,15 +21,15 @@ export default function LoginPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setError(null)
+    setLoading(true)
     try {
       await login(email, password)
-      // login() itself pushes to /admin/dashboard on success
     } catch (err: unknown) {
-      if (err instanceof Error) {
-        setError(err.message)
-      } else {
-        setError(String(err))
-      }
+      // Narrow unknown to Error for a message
+      const msg = err instanceof Error ? err.message : 'Login failed'
+      setError(msg)
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -66,9 +65,10 @@ export default function LoginPage() {
         </label>
         <button
           type="submit"
+          disabled={loading}
           className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700"
         >
-          Log In
+          {loading ? 'Signing in…' : 'Log In'}
         </button>
       </form>
     </div>
