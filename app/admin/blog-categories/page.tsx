@@ -1,6 +1,6 @@
 // app/admin/blog-categories/page.tsx
 
-import { CategoryTabs } from "../components/category/CategoryTabs";
+import { CategoryTabs } from "./category/CategoryTabs";
 
 
 

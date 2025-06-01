@@ -58,6 +58,12 @@ const menus: Menu[] = [
     href: "/admin/blog-categories",
     Icon: FileTextIcon,
   },
+    {
+    key: "blog",
+    title: "Blog",
+    href: "/admin/blogs",
+    Icon: FileTextIcon,
+  },
   {
     key: "courses",
     title: "Courses",

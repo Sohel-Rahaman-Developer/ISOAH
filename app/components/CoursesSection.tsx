@@ -1,11 +1,11 @@
-"use client";
+'use client'
 
-import React from "react";
-import Link from "next/link";
-import Image, { ImageLoaderProps } from "next/image";
-import { motion } from "framer-motion";
-import { courses } from "@/data/courses";
-import type { Course } from "@/app/types/course";
+import React from 'react'
+import Link from 'next/link'
+import Image, { ImageLoaderProps } from 'next/image'
+import { motion } from 'framer-motion'
+import { courses } from '@/data/courses'
+import type { Course } from '@/app/types/course'
 
 const cardVariants = {
   hidden: (i: number) => ({
@@ -14,13 +14,13 @@ const cardVariants = {
     scale: 0.8,
   }),
   visible: { opacity: 1, x: 0, scale: 1 },
-};
+}
 
 // loader that auto-prefixes "/" when needed
 const localLoader = ({ src }: ImageLoaderProps) => {
-  if (src.startsWith("/") || src.startsWith("http")) return src;
-  return `/${src}`;
-};
+  if (src.startsWith('/') || src.startsWith('http')) return src
+  return `/${src}`
+}
 
 const CoursesSection: React.FC = () => (
   <section
@@ -28,7 +28,7 @@ const CoursesSection: React.FC = () => (
     className="py-12 min-h-[60vh] flex items-center justify-center"
     style={{
       background:
-        "linear-gradient(180deg, rgba(255, 255, 255, 0.97) 80%, #000319 100%)",
+        'linear-gradient(180deg, rgba(255, 255, 255, 0.97) 80%, #000319 100%)',
     }}
   >
     <div className="max-w-7xl mx-auto px-4">
@@ -39,7 +39,7 @@ const CoursesSection: React.FC = () => (
       <div className="flex flex-wrap justify-center -mx-4">
         {courses.map((course: Course, idx: number) => (
           <motion.div
-            key={course.id}
+            key={idx} // use idx or another unique field (e.g. course.slug)
             custom={idx}
             variants={cardVariants}
             initial="hidden"
@@ -87,6 +87,6 @@ const CoursesSection: React.FC = () => (
       </div>
     </div>
   </section>
-);
+)
 
-export default CoursesSection;
+export default CoursesSection

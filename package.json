@@ -58,6 +58,7 @@
     "framer-motion": "^11.13.5",
     "gsap": "^3.12.5",
     "input-otp": "^1.4.2",
+    "jodit-react": "^5.2.19",
     "locomotive-scroll": "^4.1.4",
     "lru-cache": "^11.1.0",
     "lucide-react": "^0.468.0",

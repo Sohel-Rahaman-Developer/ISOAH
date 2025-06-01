@@ -1,26 +1,26 @@
-"use client";
+'use client'
 
-import React, { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react"
+import { AnimatePresence, motion } from "framer-motion"
 import {
   FiClock,
   FiRefreshCw,
   FiVideo,
   FiDatabase,
   FiDownload,
-} from "react-icons/fi";
-import { AiOutlineProject } from "react-icons/ai";
-import type { Course } from "@/app/types/course";
-// import Image from "next/image";
+} from "react-icons/fi"
+import { AiOutlineProject } from "react-icons/ai"
+import type { Course } from "@/app/types/course"
 
 interface CourseCurriculumProps {
-  milestones: Course["curriculum"];
+  milestones: Course["curriculum"]
 }
 
 export default function CourseCurriculum({
   milestones,
 }: CourseCurriculumProps) {
-  const [openId, setOpenId] = useState<number>(milestones[0]?.id || 0);
+  // Change openId to be a string (matching milestones[i].id’s type)
+  const [openId, setOpenId] = useState<string>(milestones[0]?.id || "")
 
   return (
     <section className="bg-gray-50 py-16 px-4">
@@ -50,8 +50,8 @@ export default function CourseCurriculum({
               <p className="text-xs text-gray-500">Duration</p>
               <p className="font-semibold text-gray-900">
                 {milestones.reduce((sum, m) => {
-                  const weeks = parseInt(m.duration) || 0;
-                  return sum + weeks;
+                  const weeks = parseInt(m.duration) || 0
+                  return sum + weeks
                 }, 0)}{" "}
                 Weeks
               </p>
@@ -69,8 +69,8 @@ export default function CourseCurriculum({
             <div>
               <p className="text-xs text-gray-500">Live Sessions</p>
               <p className="font-semibold text-gray-900">
-                {milestones.reduce((sum, m) => sum + m.stats.liveSessions, 0)}
-                + hrs
+                {milestones.reduce((sum, m) => sum + m.stats.liveSessions, 0)}+
+                hrs
               </p>
             </div>
           </div>
@@ -89,13 +89,7 @@ export default function CourseCurriculum({
           <span className="inline-block bg-blue-600 text-white text-xs uppercase font-semibold mr-3 px-2 py-1 rounded-full">
             with
           </span>
-          {/* <Image
-            src="/images/placement-support-illu.png"
-            alt="Placement Support"
-            width={40}
-            height={40}
-            className="h-10 w-10 mr-3"
-          /> */}
+          {/* Example placeholder for illustrated icon */}
           <div>
             <p className="text-sm text-gray-700">Placement Support</p>
           </div>
@@ -105,18 +99,17 @@ export default function CourseCurriculum({
       {/* Accordion */}
       <div className="max-w-5xl mx-auto space-y-6">
         {milestones.map((ms) => {
-          const isOpen = openId === ms.id;
+          // Since ms.id is a string, compare to openId (also string)
+          const isOpen = openId === ms.id
           return (
             <div
               key={ms.id}
               className="rounded-2xl overflow-hidden border border-gray-300"
             >
               <button
-                onClick={() => setOpenId(isOpen ? 0 : ms.id)}
+                onClick={() => setOpenId(isOpen ? "" : ms.id)}
                 className={`w-full flex justify-between items-center px-6 py-4 ${
-                  isOpen
-                    ? "bg-gray-800 text-white"
-                    : "bg-gray-100 text-gray-900"
+                  isOpen ? "bg-gray-800 text-white" : "bg-gray-100 text-gray-900"
                 }`}
               >
                 <span className="font-semibold">
@@ -179,17 +172,13 @@ export default function CourseCurriculum({
                             </ul>
                             {mod.project && (
                               <p className="mt-3 text-sm">
-                                <span className="font-semibold">
-                                  Project:
-                                </span>{" "}
+                                <span className="font-semibold">Project:</span>{" "}
                                 {mod.project}
                               </p>
                             )}
                             {mod.caseStudy && (
                               <p className="text-sm">
-                                <span className="font-semibold">
-                                  Case Study:
-                                </span>{" "}
+                                <span className="font-semibold">Case Study:</span>{" "}
                                 {mod.caseStudy}
                               </p>
                             )}
@@ -201,9 +190,9 @@ export default function CourseCurriculum({
                 )}
               </AnimatePresence>
             </div>
-          );
+          )
         })}
       </div>
     </section>
-  );
+  )
 }
